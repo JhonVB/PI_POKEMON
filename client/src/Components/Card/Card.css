@@ -1,0 +1,23 @@
+.card {
+  background-color: rgb(159, 86, 86);
+  border-radius: 20px;
+  width: 13rem;
+  height: 16rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.card-img {
+  width: 60%;
+  display: block;
+}
+
+.card-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.type + .type {
+  margin-left: 1rem;
+}

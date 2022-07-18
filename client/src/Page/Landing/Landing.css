@@ -1,0 +1,51 @@
+.containerLanding {
+  height: 100vh;
+  display: flex;
+  background-color: black;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.titulo {
+  width: 90%;
+}
+
+.containerLeft {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 40%;
+  background-color: black;
+  flex-direction: column;
+  border-right: 7px groove rgb(226, 137, 65);
+}
+
+.containerRigth {
+  display: flex;
+  align-items: center;
+}
+
+.img {
+  margin-top: 2rem;
+  width: 110%;
+  height: 95%;
+}
+
+.pokeball {
+  width: 15rem;
+  cursor: pointer;
+  -webkit-transform: rotate(0eg);
+  transform: rotate(0deg);
+  transition: 1.5s ease-in-out;
+  background-color: white;
+  border-radius: 100%;
+}
+
+.pokeball:hover {
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+  background-color: rgb(202, 62, 62);
+  transition: 1.5s ease-in-out;
+}
