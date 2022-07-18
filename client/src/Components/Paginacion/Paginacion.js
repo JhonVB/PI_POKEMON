@@ -4,7 +4,7 @@ import "./Paginacion.css";
 import Cards from "../Cards/Cards";
 
 function Paginacion({ data, pageLimit, dataLimit }) {
-  const [pages] = useState(Math.round(data.length / dataLimit));
+  const [pages] = useState(Math.ceil(data.length / dataLimit));
   const [currentPage, setCurrentPage] = useState(1);
 
   function goToNextPage() {
@@ -23,14 +23,24 @@ function Paginacion({ data, pageLimit, dataLimit }) {
   const getPaginatedData = () => {
     const startIndex = currentPage * dataLimit - dataLimit;
     const endIndex = startIndex + dataLimit;
-    console.log(data.slice(startIndex, endIndex));
     return data.slice(startIndex, endIndex);
   };
 
   const getPaginationGroup = () => {
     let start = Math.floor((currentPage - 1) / pageLimit) * pageLimit;
-    return new Array(pageLimit).fill().map((_, idx) => start + idx + 1);
+    const mostrar = new Array(pageLimit)
+      .fill()
+      .map((_, idx) => start + idx + 1);
+
+    for (let e of mostrar) {
+      if (e === pages) {
+        const nuevo = mostrar.slice(0, mostrar.indexOf(e) + 1);
+        return nuevo;
+      }
+    }
+    return mostrar;
   };
+
   return (
     <div className="contenedor">
       <div className="pagination">

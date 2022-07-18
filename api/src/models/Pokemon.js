@@ -10,7 +10,6 @@ module.exports = (sequelize) => {
       primaryKey: true,
       defaultValue: DataTypes.UUIDV4,
     },
-
     name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -19,16 +18,22 @@ module.exports = (sequelize) => {
       type: DataTypes.TEXT,
     },
     hp: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
     },
     attack: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
     },
     defense: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
     },
-    speed: { type: DataTypes.INTEGER },
-    height: { type: DataTypes.INTEGER },
-    weight: { type: DataTypes.INTEGER },
+    speed: {
+      type: DataTypes.STRING,
+    },
+    height: {
+      type: DataTypes.STRING,
+    },
+    weight: {
+      type: DataTypes.STRING,
+    },
   });
 };

@@ -13,7 +13,7 @@ function App() {
           <Route exact path="/" element={<Landing />} />
           <Route exact path="/home" element={<Home />} />
           <Route exact path="/pokemon/:id" element={<Detalle />} />
-          <Route exact path="formulario" element={<Formulario />} />
+          <Route exact path="/formulario" element={<Formulario />} />
         </Routes>
       </BrowserRouter>
     </div>

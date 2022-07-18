@@ -6,9 +6,8 @@ import Paginado from "../../Components/Paginacion/Paginacion";
 
 function Home() {
   const dispatch = useDispatch();
-
   const pokemons = useSelector((state) => state.pokemons);
-  console.log(pokemons);
+
   useEffect(() => {
     dispatch(getPokemons());
     dispatch(getTypes());

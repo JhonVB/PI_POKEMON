@@ -38,7 +38,6 @@ const createPokemon = async (req, res) => {
 
     //  console.log(newPokemon);
     const idsType = type.map((type) => type.id);
-    console.log(idsType);
 
     const newType = await Type.findAll({
       where: { id: idsType },
@@ -51,6 +50,7 @@ const createPokemon = async (req, res) => {
     res.send(newPokemon);
   } catch (error) {}
 };
+
 module.exports = {
   getPokemons,
   getById,

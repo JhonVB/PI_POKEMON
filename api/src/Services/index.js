@@ -19,9 +19,9 @@ const infoApi = async () => {
       return {
         id: data.id,
         name: data.forms[0].name,
-        height: data.height / 10,
+        height: data.height * 10,
         image: data.sprites.other.dream_world.front_default,
-        weight: data.weight / 10,
+        weight: data.weight * 10,
         hp: data.stats[0].base_stat,
         attack: data.stats[1].base_stat,
         defense: data.stats[2].base_stat,

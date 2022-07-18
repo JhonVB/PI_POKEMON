@@ -1,38 +1,53 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import { getPokemon, getPokemons, getTypes } from "../../Redux/actions";
 // import { getCharacter } from "../../redux/actions";
 
 function Detalle() {
   const { id } = useParams();
-  const pokemons = useSelector((state) => state.pokemons);
-  const pokemonDetail = pokemons.find((pokemon) => pokemon.id == id);
-  console.log(pokemonDetail);
+
+  const dispatch = useDispatch();
+
+  const pokemon = useSelector((state) => state.pokemon);
+  //   const pokemonDetail = pokemons.find((pokemon) => pokemon.id == id);
+
+  useEffect(() => {
+    dispatch(getPokemon(id));
+  }, [dispatch]);
+
+  //   console.log(pokemonDetail);
   return (
     <div>
-      <p>{pokemonDetail.name}</p>
-      <img src={pokemonDetail.image} alt="" />
-      <p>HEIGHT:</p>
-      <p>{pokemonDetail.height}</p>
-      <p>weight:</p>
-      <p>{pokemonDetail.weight}</p>
-      <p>hp:</p>
-      <p>{pokemonDetail.hp}</p>
-      <p>attack:</p>
-      <p>{pokemonDetail.attack}</p>
-      <p>defense:</p>
-      <p>{pokemonDetail.defense}</p>
-      <p>speed:</p>
-      <p>{pokemonDetail.speed}</p>
+      {pokemon ? (
+        <div>
+          <p>{pokemon.name}</p>
+          <img src={pokemon.image} alt="" />
+          <p>HEIGHT:</p>
+          <p>{pokemon.height} Cm</p>
+          <p>weight:</p>
+          <p>{pokemon.weight} gramos</p>
+          <p>hp:</p>
+          <p>{pokemon.hp}</p>
+          <p>attack:</p>
+          <p>{pokemon.attack}</p>
+          <p>defense:</p>
+          <p>{pokemon.defense}</p>
+          <p>speed:</p>
+          <p>{pokemon.speed}</p>
 
-      <p>TYPES:</p>
-      {pokemonDetail.types?.map((type) => {
-        return (
-          <p className="type" key={type.id}>
-            {type.name}
-          </p>
-        );
-      })}
+          <p>TYPES:</p>
+          {pokemon.types?.map((type) => {
+            return (
+              <p className="type" key={type.id}>
+                {type.name}
+              </p>
+            );
+          })}
+        </div>
+      ) : (
+        <h1>Cargando</h1>
+      )}
     </div>
   );
 }
