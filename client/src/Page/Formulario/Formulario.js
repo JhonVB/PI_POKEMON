@@ -42,12 +42,6 @@ function validate(pokemon) {
     error.hp = "species is invalid";
   }
 
-  if (!pokemon.hp) {
-    error.attack = "species is required";
-  } else if (!/(^\d{1,10}$)/.test(pokemon.attack)) {
-    error.attack = "species is invalid";
-  }
-
   if (!pokemon.attack) {
     error.attack = "species is required";
   } else if (!/(^\d{1,10}$)/.test(pokemon.attack)) {
@@ -90,7 +84,7 @@ function Formulario() {
     weight: "",
     types: [],
   });
-  console.log(pokemon);
+  //   console.log(pokemon);
 
   const handelCheked = (e) => {
     const id = e.target.id;
@@ -120,7 +114,6 @@ function Formulario() {
   };
 
   const handleSubmit = (e) => {
-    console.log(pokemon);
     e.preventDefault();
     dispatch(createPokemon(pokemon));
     setPokemon({
@@ -135,13 +128,14 @@ function Formulario() {
       types: [],
     });
     alert("Formulario enviado");
-    //  setTimeout(() => {
-    //    navegador("/home");
-    //  }, 1000);
+    setTimeout(() => {
+      navegador("/home");
+    }, 1000);
   };
 
   return (
     <div>
+      <button onClick={() => navegador("/home")}>Home</button>
       <form onSubmit={handleSubmit}>
         <p>NAME:</p>
         <input type="text" name="name" onChange={handelChange} />
@@ -179,7 +173,7 @@ function Formulario() {
         />
         {errors.episode && <p>{errors.episode}</p>}
 
-        {types.map((type) => {
+        {types?.map((type) => {
           return (
             <p key={type.id}>
               <input

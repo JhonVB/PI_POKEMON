@@ -5,6 +5,7 @@ import Home from "./Page/Home/Home";
 import Landing from "./Page/Landing/Landing";
 import Detalle from "./Page/Detalle/Detalle";
 import Formulario from "./Page/Formulario/Formulario";
+
 function App() {
   return (
     <div className="App">

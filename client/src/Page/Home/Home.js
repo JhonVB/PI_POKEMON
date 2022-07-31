@@ -8,6 +8,12 @@ function Home() {
   const dispatch = useDispatch();
   const pokemons = useSelector((state) => state.pokemons);
 
+  console.log(pokemons.length);
+
+  const paginas = () => {
+    return Math.ceil(pokemons.length / 12);
+  };
+
   useEffect(() => {
     dispatch(getPokemons());
     dispatch(getTypes());
@@ -18,7 +24,7 @@ function Home() {
       {pokemons.length > 0 ? (
         <div>
           <Nav />
-          <Paginado data={pokemons} pageLimit={5} dataLimit={10} />
+          <Paginado data={pokemons} pageLimit={paginas()} dataLimit={12} />
         </div>
       ) : (
         <h1>Cargando...</h1>

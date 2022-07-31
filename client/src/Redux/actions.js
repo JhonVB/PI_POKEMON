@@ -3,6 +3,8 @@ import {
   GET_TYPES,
   GET_DETAIL,
   CREATE_POKEMON,
+  FILTER_TYPE,
+  FILTER_ORIGIN,
 } from "../Redux/actionsTypes";
 import axios from "axios";
 
@@ -40,10 +42,24 @@ export function getPokemon(id) {
 export function createPokemon(estado) {
   return async function (dispatch) {
     var info = await axios.post(`http://localhost:3001/pokemons`, estado);
-    //  console.log(info);
+    console.log(info.data);
     return dispatch({
       type: CREATE_POKEMON,
       payload: info.data,
     });
+  };
+}
+
+export function filterType(type) {
+  return {
+    type: FILTER_TYPE,
+    payload: type,
+  };
+}
+
+export function filterOrigin(origin) {
+  return {
+    type: FILTER_ORIGIN,
+    payload: origin,
   };
 }
