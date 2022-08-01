@@ -6,13 +6,9 @@ import Paginado from "../../Components/Paginacion/Paginacion";
 
 function Home() {
   const dispatch = useDispatch();
-  const pokemons = useSelector((state) => state.pokemons);
 
-  console.log(pokemons.length);
-
-  const paginas = () => {
-    return Math.ceil(pokemons.length / 12);
-  };
+  const { pokemons, order } = useSelector((state) => state);
+  const paginas = () => Math.ceil(pokemons.length / 12);
 
   useEffect(() => {
     dispatch(getPokemons());
@@ -24,13 +20,16 @@ function Home() {
       {pokemons.length > 0 ? (
         <div>
           <Nav />
-          <Paginado data={pokemons} pageLimit={paginas()} dataLimit={12} />
+          <Paginado
+            data={pokemons}
+            pageLimit={paginas()}
+            dataLimit={12}
+            order={order}
+          />
         </div>
       ) : (
         <h1>Cargando...</h1>
       )}
-
-      {/* <Cards pokemons={pokemons} /> */}
     </div>
   );
 }

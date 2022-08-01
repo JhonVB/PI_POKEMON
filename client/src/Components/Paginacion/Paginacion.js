@@ -1,16 +1,16 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useSelector } from "react";
 import "./Paginacion.css";
 import Cards from "../Cards/Cards";
 
-function Paginacion({ data, pageLimit, dataLimit }) {
+function Paginacion({ data, pageLimit, dataLimit, order }) {
   const [pages, setPages] = useState(Math.ceil(data.length / dataLimit));
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     setPages(() => Math.ceil(data.length / dataLimit));
     setCurrentPage(1);
-  }, [data.length]);
+  }, [data.length, order]);
 
   function goToNextPage() {
     setCurrentPage((page) => page + 1);

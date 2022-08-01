@@ -5,6 +5,8 @@ import {
   CREATE_POKEMON,
   FILTER_TYPE,
   FILTER_ORIGIN,
+  ORDER_NAME,
+  FILTROS,
 } from "../Redux/actionsTypes";
 import axios from "axios";
 
@@ -61,5 +63,12 @@ export function filterOrigin(origin) {
   return {
     type: FILTER_ORIGIN,
     payload: origin,
+  };
+}
+
+export function orderName(payload) {
+  return {
+    type: ORDER_NAME,
+    payload,
   };
 }

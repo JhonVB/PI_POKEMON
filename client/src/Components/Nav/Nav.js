@@ -1,16 +1,23 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { filterType } from "../../Redux/actions";
+import { filterType, filterOrigin, orderName } from "../../Redux/actions";
 import { useSelector, useDispatch } from "react-redux";
 
 function Nav() {
   const dispatch = useDispatch();
-  //   const [type, setType] = useState("");
   const state = useSelector((state) => state.types);
 
   const handleType = (e) => {
-    //  setType(e.target.value);
     dispatch(filterType(e.target.value));
+  };
+
+  const handleOrigin = (e) => {
+    dispatch(filterOrigin(e.target.value));
+  };
+
+  const handleOrder = (e) => {
+    e.preventDefault();
+    dispatch(orderName(e.target.value));
   };
 
   return (
@@ -27,10 +34,16 @@ function Nav() {
           </option>
         ))}
       </select>
-      <select>
+      <select onChange={handleOrigin}>
         <option value="all">All</option>
         <option value="db">DB</option>
         <option value="api">API</option>
+      </select>
+
+      <select onChange={handleOrder}>
+        <option value="ascen">Ascendente</option>
+        <option value="descen">Descendente</option>
+        <option value="attack">Attack</option>
       </select>
     </div>
   );
