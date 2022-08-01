@@ -4,9 +4,10 @@ const { Pokemon, Type } = require("../db");
 const infoApi = async () => {
   try {
     const pageOne = (await axios.get(`https://pokeapi.co/api/v2/pokemon`)).data;
-    const pageTwo = (await axios.get(pageOne.next)).data;
+    // const pageTwo = (await axios.get(pageOne.next)).data;
 
-    const paginas = [pageOne.results, pageTwo.results];
+    // const paginas = [pageOne.results, pageTwo.results];
+    const paginas = [pageOne.results];
 
     const infoAllPokemons = paginas
       .flat()

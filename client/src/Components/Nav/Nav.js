@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { filterType, filterOrigin, orderName } from "../../Redux/actions";
+import {
+  filterType,
+  filterOrigin,
+  orderName,
+  orderAttack,
+} from "../../Redux/actions";
 import { useSelector, useDispatch } from "react-redux";
 
 function Nav() {
@@ -20,12 +25,17 @@ function Nav() {
     dispatch(orderName(e.target.value));
   };
 
+  const handleOrderAttack = (e) => {
+    dispatch(orderAttack(e.target.value));
+  };
   return (
     <div>
       <Link to="/formulario">
         <button>Create Pokemons</button>
       </Link>
+
       <input type="text" />
+      <span>typo</span>
       <select onChange={handleType}>
         <option value="all">all</option>
         {state?.map((type) => (
@@ -34,16 +44,23 @@ function Nav() {
           </option>
         ))}
       </select>
+      <span>Origin</span>
       <select onChange={handleOrigin}>
         <option value="all">All</option>
         <option value="db">DB</option>
         <option value="api">API</option>
       </select>
-
+      <span>Order</span>
       <select onChange={handleOrder}>
+        <option value="all">All</option>
         <option value="ascen">Ascendente</option>
         <option value="descen">Descendente</option>
-        <option value="attack">Attack</option>
+      </select>
+      <span>Order Attack</span>
+      <select onChange={handleOrderAttack}>
+        <option value="all">All</option>
+        <option value="ascen">Ascendente</option>
+        <option value="descen">Descendente</option>
       </select>
     </div>
   );

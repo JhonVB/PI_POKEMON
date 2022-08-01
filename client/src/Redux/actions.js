@@ -6,14 +6,14 @@ import {
   FILTER_TYPE,
   FILTER_ORIGIN,
   ORDER_NAME,
-  FILTROS,
+  ORDER_ATTACK,
 } from "../Redux/actionsTypes";
 import axios from "axios";
 
 export function getPokemons() {
   return async function (dispatch) {
     const pokemons = await axios.get(`http://localhost:3001/pokemons`);
-
+    console.log(pokemons);
     return dispatch({
       type: GET_POKEMONS,
       payload: pokemons.data,
@@ -69,6 +69,13 @@ export function filterOrigin(origin) {
 export function orderName(payload) {
   return {
     type: ORDER_NAME,
+    payload,
+  };
+}
+
+export function orderAttack(payload) {
+  return {
+    type: ORDER_ATTACK,
     payload,
   };
 }

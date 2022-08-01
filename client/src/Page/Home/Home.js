@@ -6,14 +6,37 @@ import Paginado from "../../Components/Paginacion/Paginacion";
 
 function Home() {
   const dispatch = useDispatch();
-
-  const { pokemons, order } = useSelector((state) => state);
+  const { pokemons, order, type, origin, orderAttack } = useSelector(
+    (state) => state
+  );
   const paginas = () => Math.ceil(pokemons.length / 12);
+  let data = [];
+
+  const byOrigin = {
+    db: "string",
+    api: "number",
+  };
 
   useEffect(() => {
     dispatch(getPokemons());
     dispatch(getTypes());
   }, [dispatch]);
+
+  if (type == "all" && origin == "all") data = pokemons;
+  else if (type != "all" && origin == "all") {
+    data = pokemons.filter((pokemon) =>
+      pokemon.types.find((tipo) => tipo.name == type)
+    );
+  } else if (type == "all" && origin !== "all") {
+    data = pokemons.filter((el) => byOrigin[origin] === typeof el.id);
+  } else {
+    data = pokemons.filter((pokemon) =>
+      pokemon.types.find((tipo) => tipo.name == type)
+    );
+    data = data.filter((el) => byOrigin[origin] === typeof el.id);
+  }
+
+  console.log(data);
 
   return (
     <div>
@@ -21,10 +44,11 @@ function Home() {
         <div>
           <Nav />
           <Paginado
-            data={pokemons}
+            data={data}
             pageLimit={paginas()}
             dataLimit={12}
             order={order}
+            orderAttack={orderAttack}
           />
         </div>
       ) : (
