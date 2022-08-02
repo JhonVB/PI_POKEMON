@@ -1,28 +1,32 @@
 const axios = require("axios");
 const e = require("express");
-const { allPokemons } = require("../Services/index");
+const { allPokemons, getByName, detailId } = require("../Services/index");
 const { Pokemon, Type } = require("../db");
 
 const getPokemons = async (req, res) => {
   const { name } = req.query;
-  const pokemons = await allPokemons();
-  console.log(pokemons);
-  if (name) {
-    let encontrados = pokemons.filter((pokemon) =>
-      pokemon.name.toLowerCase().includes(name.toLowerCase())
-    );
-    encontrados.length > 0 ? res.send(encontrados) : res.send("no existe");
+
+  let pokemons = [];
+  if (!name) {
+    pokemons = await allPokemons();
   } else {
-    res.send(pokemons);
+    pokemons = await getByName(name);
   }
+
+  res.send(pokemons);
 };
 
 const getById = async (req, res) => {
   try {
     const { id } = req.params;
-    const pokemons = await allPokemons();
-    const pokemonId = pokemons.find((e) => e.id == id);
-    pokemonId ? res.send(pokemonId) : res.send("No existe");
+    if (id > 40) {
+      const pokemon = await detailId(id);
+      res.send(pokemon);
+    } else {
+      const pokemons = await allPokemons();
+      const pokemonId = pokemons.find((e) => e.id == id);
+      pokemonId ? res.send(pokemonId) : res.send("No existe");
+    }
   } catch (error) {
     res.send("Error en el info del Pokemon");
   }

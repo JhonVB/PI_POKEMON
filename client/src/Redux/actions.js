@@ -10,14 +10,25 @@ import {
 } from "../Redux/actionsTypes";
 import axios from "axios";
 
-export function getPokemons() {
+export function getPokemons(name) {
   return async function (dispatch) {
-    const pokemons = await axios.get(`http://localhost:3001/pokemons`);
-    console.log(pokemons);
-    return dispatch({
-      type: GET_POKEMONS,
-      payload: pokemons.data,
-    });
+    let pokemons = [];
+
+    if (name) {
+      pokemons = await axios.get(
+        `http://localhost:3001/pokemons?name=${name.toLowerCase()}`
+      );
+      return dispatch({
+        type: GET_POKEMONS,
+        payload: pokemons.data,
+      });
+    } else {
+      pokemons = await axios.get(`http://localhost:3001/pokemons`);
+      return dispatch({
+        type: GET_POKEMONS,
+        payload: pokemons.data,
+      });
+    }
   };
 }
 
@@ -34,6 +45,7 @@ export function getTypes() {
 export function getPokemon(id) {
   return async function (dispatch) {
     const pokemon = await axios.get(`http://localhost:3001/pokemons/${id}`);
+    console.log("action", pokemon);
     return dispatch({
       type: GET_DETAIL,
       payload: pokemon.data,

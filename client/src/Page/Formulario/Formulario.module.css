@@ -1,13 +1,19 @@
 .contenedorForm {
   background-color: rgba(17, 22, 22, 0.678);
+  padding: 30px;
 }
 
 .contenedor {
   display: flex;
-  width: 60vh;
+  width: 40vh;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
+
+.button {
+}
+
 .contenedorTypos {
   display: flex;
   justify-content: space-between;
@@ -16,7 +22,7 @@
 }
 
 span {
-  margin-left: 1rem;
+  margin-left: 1.1rem;
 }
 
 .master {
@@ -32,6 +38,7 @@ span {
   font-size: 1rem;
   font-family: sans-serif;
   font-weight: 600;
+  position: relative;
 }
 
 .contenedorInputs {
@@ -40,5 +47,14 @@ span {
   align-items: center;
   flex-direction: column;
   width: 40vh;
-  margin-left: 1.9rem;
+}
+
+.contenedorButton {
+  position: absolute;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  width: 150vh;
+  height: 15vh;
 }

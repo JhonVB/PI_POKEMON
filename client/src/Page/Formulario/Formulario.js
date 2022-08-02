@@ -133,8 +133,13 @@ function Formulario() {
 
   return (
     <div className={style.master}>
+      <div className={style.contenedorButton}>
+        <button className={style.button} onClick={() => navegador("/home")}>
+          Home
+        </button>
+      </div>
+
       <div className={style.contenedor}>
-        <button onClick={() => navegador("/home")}>Home</button>
         <div className={style.contenedorForm}>
           <form onSubmit={handleSubmit}>
             <div className={style.contenedorInputs}>

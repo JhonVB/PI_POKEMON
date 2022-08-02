@@ -1,7 +1,6 @@
 const axios = require("axios");
 const { uploadTypes } = require("../Services/index");
-// const {}
-// const { infoApi } = require("../Services/index");
+
 const getTypes = async (req, res) => {
   try {
     const types = await uploadTypes();

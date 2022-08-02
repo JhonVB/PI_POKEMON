@@ -5,13 +5,20 @@ import {
   filterOrigin,
   orderName,
   orderAttack,
+  getPokemons,
 } from "../../Redux/actions";
 import { useSelector, useDispatch } from "react-redux";
 import style from "./Nav.module.css";
 
 function Nav() {
   const dispatch = useDispatch();
+  const [name, setName] = useState("");
   const state = useSelector((state) => state.types);
+
+  console.log(name);
+  const handleName = (e) => {
+    setName(e.target.value);
+  };
 
   const handleType = (e) => {
     dispatch(filterType(e.target.value));
@@ -32,8 +39,13 @@ function Nav() {
   return (
     <div className={style.contenedor}>
       <div>
-        <input type="text" placeholder="Nombre de pokemon" />
-        <button>Buscar</button>
+        <input
+          type="text"
+          onChange={handleName}
+          placeholder="Nombre de pokemon"
+        />
+        <button onClick={() => dispatch(getPokemons(name))}>Buscar</button>
+
         <Link to="/formulario">
           <button className={style.button}>Crear Pokémon</button>
         </Link>
