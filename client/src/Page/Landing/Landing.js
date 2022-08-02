@@ -1,21 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./Landing.css";
+import style from "./Landing.module.css";
 import pokeball from "../../Utils/pokeball.png";
 import gif from "../../Utils/gifLanding.gif";
 import titulo from "../../Utils/titulo.png";
 
 function Landing() {
   return (
-    <div className="containerLanding">
-      <div className="containerLeft">
-        <img className="titulo" src={titulo} alt="" />
+    <div className={style.containerLanding}>
+      <div className={style.containerLeft}>
+        <img className={style.titulo} src={titulo} alt="titulo" />
         <Link to="/home">
-          <img className="pokeball" src={pokeball} alt="" />
+          <img className={style.pokeball} src={pokeball} alt="pokeball" />
         </Link>
       </div>
-      <div className="containerRigth">
-        <img className="img" src={gif} alt="gif de inicio" />
+      <div className={style.containerRigth}>
+        <img className={style.img} src={gif} alt="gif de inicio" />
       </div>
     </div>
   );

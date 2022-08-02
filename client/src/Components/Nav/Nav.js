@@ -7,7 +7,7 @@ import {
   orderAttack,
 } from "../../Redux/actions";
 import { useSelector, useDispatch } from "react-redux";
-import "./Nav.css";
+import style from "./Nav.module.css";
 
 function Nav() {
   const dispatch = useDispatch();
@@ -30,16 +30,16 @@ function Nav() {
     dispatch(orderAttack(e.target.value));
   };
   return (
-    <div className="contenedor">
-      <div className="create">
+    <div className={style.contenedor}>
+      <div>
         <input type="text" placeholder="Nombre de pokemon" />
         <button>Buscar</button>
         <Link to="/formulario">
-          <button>Crear Pokémon</button>
+          <button className={style.button}>Crear Pokémon</button>
         </Link>
       </div>
 
-      <div className="nav-filtros">
+      <div>
         <span>Tipo</span>
         <select onChange={handleType}>
           <option value="all">all</option>

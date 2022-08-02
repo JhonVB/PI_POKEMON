@@ -1,24 +1,27 @@
 import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { getPokemon, getPokemons, getTypes } from "../../Redux/actions";
-// import { getCharacter } from "../../redux/actions";
+import { getPokemon } from "../../Redux/actions";
+import style from "./Detalle.module.css";
 
 function Detalle() {
   const { id } = useParams();
-
   const dispatch = useDispatch();
 
-  const pokemon = useSelector((state) => state.pokemon);
-  //   const pokemonDetail = pokemons.find((pokemon) => pokemon.id == id);
-
+  let pokemon = useSelector((state) => state.pokemon);
+  console.log(pokemon);
   useEffect(() => {
     dispatch(getPokemon(id));
+    return () => {
+      pokemon = {};
+    };
   }, [dispatch]);
 
-  //   console.log(pokemonDetail);
   return (
-    <div>
+    <div className={style.main}>
+      <Link to="/home">
+        <button>Al home</button>
+      </Link>
       {pokemon ? (
         <div>
           <p>{pokemon.name}</p>

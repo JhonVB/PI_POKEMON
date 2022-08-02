@@ -4,7 +4,7 @@ import { getPokemons, getTypes } from "../../Redux/actions";
 import Nav from "../../Components/Nav/Nav";
 import Paginado from "../../Components/Paginacion/Paginacion";
 import Loading from "../../Utils/gifLoading.webp";
-import "./Home.css";
+import style from "./Home.module.css";
 
 function Home() {
   const dispatch = useDispatch();
@@ -41,8 +41,8 @@ function Home() {
   return (
     <div>
       {pokemons.length > 0 ? (
-        <div className="fondo">
-          <div className="nav">
+        <div className={style.fondo}>
+          <div className={style.nav}>
             <Nav />
           </div>
 

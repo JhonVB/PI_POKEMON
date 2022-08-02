@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect, useSelector } from "react";
+import { useState, useEffect } from "react";
 import "./Paginacion.css";
 import Cards from "../Cards/Cards";
 

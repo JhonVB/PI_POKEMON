@@ -1,9 +1,10 @@
 import React from "react";
 import Card from "../Card/Card";
-import "./Cards.css";
+import style from "./Cards.module.css";
+
 export default function Cards({ pokemons }) {
   return (
-    <div className="container">
+    <div className={style.container}>
       {pokemons?.map((pokemon) => {
         return (
           <Card

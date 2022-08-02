@@ -1,12 +1,15 @@
 .contenedor {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   width: 100%;
   font-size: 1rem;
   font-family: sans-serif;
   color: white;
   font-weight: 600;
+  flex-direction: column;
+  justify-content: space-around;
 }
+
 input,
 button {
   margin-left: 1rem;

@@ -1,0 +1,8 @@
+.main {
+  height: 100vh;
+  display: flex;
+  background-color: rgb(113, 162, 219);
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
