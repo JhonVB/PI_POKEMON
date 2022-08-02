@@ -1,22 +1,39 @@
 .card {
-  background-color: rgb(159, 86, 86);
-  border-radius: 20px;
+  background-color: #5a263bf6;
+  border-radius: 30px;
   width: 13rem;
   height: 16rem;
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: space-around;
+  color: white;
+  text-decoration: none;
 }
 .card-img {
-  width: 60%;
-  display: block;
+  width: 50%;
+  margin-top: 1rem;
 }
 
+.link-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: sans-serif;
+}
 .card-content {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  flex-wrap: wrap;
+  font-size: 0.9rem;
+  font-weight: 400;
+  font-family: sans-serif;
 }
 .type + .type {
   margin-left: 1rem;

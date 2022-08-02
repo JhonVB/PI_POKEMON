@@ -1,0 +1,18 @@
+.contenedor {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  font-size: 1rem;
+  font-family: sans-serif;
+  color: white;
+  font-weight: 600;
+}
+input,
+button {
+  margin-left: 1rem;
+}
+
+select {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}

@@ -1,0 +1,44 @@
+.contenedorForm {
+  background-color: rgba(17, 22, 22, 0.678);
+}
+
+.contenedor {
+  display: flex;
+  width: 60vh;
+  align-items: center;
+  justify-content: center;
+}
+.contenedorTypos {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-right: 2rem;
+}
+
+span {
+  margin-left: 1rem;
+}
+
+.master {
+  display: flex;
+  width: auto;
+  height: 100vh;
+  justify-content: center;
+  background-image: url("../../Utils/fondoCreate.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+  color: white;
+  font-size: 1rem;
+  font-family: sans-serif;
+  font-weight: 600;
+}
+
+.contenedorInputs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 40vh;
+  margin-left: 1.9rem;
+}

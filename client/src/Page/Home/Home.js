@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { getPokemons, getTypes } from "../../Redux/actions";
 import Nav from "../../Components/Nav/Nav";
 import Paginado from "../../Components/Paginacion/Paginacion";
+import Loading from "../../Utils/gifLoading.webp";
+import "./Home.css";
 
 function Home() {
   const dispatch = useDispatch();
@@ -36,13 +38,14 @@ function Home() {
     data = data.filter((el) => byOrigin[origin] === typeof el.id);
   }
 
-  console.log(data);
-
   return (
     <div>
       {pokemons.length > 0 ? (
-        <div>
-          <Nav />
+        <div className="fondo">
+          <div className="nav">
+            <Nav />
+          </div>
+
           <Paginado
             data={data}
             pageLimit={paginas()}
@@ -52,7 +55,13 @@ function Home() {
           />
         </div>
       ) : (
-        <h1>Cargando...</h1>
+        <img
+          style={{
+            marginLeft: "550px",
+          }}
+          src={Loading}
+          alt="loading"
+        />
       )}
     </div>
   );

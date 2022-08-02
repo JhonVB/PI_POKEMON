@@ -7,6 +7,7 @@ import {
   orderAttack,
 } from "../../Redux/actions";
 import { useSelector, useDispatch } from "react-redux";
+import "./Nav.css";
 
 function Nav() {
   const dispatch = useDispatch();
@@ -29,39 +30,44 @@ function Nav() {
     dispatch(orderAttack(e.target.value));
   };
   return (
-    <div>
-      <Link to="/formulario">
-        <button>Create Pokemons</button>
-      </Link>
+    <div className="contenedor">
+      <div className="create">
+        <input type="text" placeholder="Nombre de pokemon" />
+        <button>Buscar</button>
+        <Link to="/formulario">
+          <button>Crear Pokémon</button>
+        </Link>
+      </div>
 
-      <input type="text" />
-      <span>typo</span>
-      <select onChange={handleType}>
-        <option value="all">all</option>
-        {state?.map((type) => (
-          <option id={type.id} value={type.name}>
-            {type.name}
-          </option>
-        ))}
-      </select>
-      <span>Origin</span>
-      <select onChange={handleOrigin}>
-        <option value="all">All</option>
-        <option value="db">DB</option>
-        <option value="api">API</option>
-      </select>
-      <span>Order</span>
-      <select onChange={handleOrder}>
-        <option value="all">All</option>
-        <option value="ascen">Ascendente</option>
-        <option value="descen">Descendente</option>
-      </select>
-      <span>Order Attack</span>
-      <select onChange={handleOrderAttack}>
-        <option value="all">All</option>
-        <option value="ascen">Ascendente</option>
-        <option value="descen">Descendente</option>
-      </select>
+      <div className="nav-filtros">
+        <span>Tipo</span>
+        <select onChange={handleType}>
+          <option value="all">all</option>
+          {state?.map((type) => (
+            <option id={type.id} value={type.name}>
+              {type.name}
+            </option>
+          ))}
+        </select>
+        <span>Origen</span>
+        <select onChange={handleOrigin}>
+          <option value="all">All</option>
+          <option value="db">DB</option>
+          <option value="api">API</option>
+        </select>
+        <span>Alfabéticamente</span>
+        <select onChange={handleOrder}>
+          <option value="all">All</option>
+          <option value="ascen">Ascendente</option>
+          <option value="descen">Descendente</option>
+        </select>
+        <span>Ataque</span>
+        <select onChange={handleOrderAttack}>
+          <option value="all">All</option>
+          <option value="ascen">Ascendente</option>
+          <option value="descen">Descendente</option>
+        </select>
+      </div>
     </div>
   );
 }

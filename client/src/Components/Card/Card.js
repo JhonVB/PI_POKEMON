@@ -4,10 +4,11 @@ import { Link } from "react-router-dom";
 function Card({ image, name, types, id }) {
   return (
     <div className="card">
-      <Link to={`/pokemon/${id}`}>
+      <Link className="link-container" to={`/pokemon/${id}`}>
         <p>{name}</p>
+        <img className="card-img" src={image} alt="Imagen de pokemos" />
       </Link>
-      <img className="card-img" src={image} alt="Imagen de pokemos" />
+
       <div className="card-content">
         {types?.map((type) => {
           return (
