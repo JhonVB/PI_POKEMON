@@ -11,14 +11,22 @@ import { useSelector, useDispatch } from "react-redux";
 import style from "./Nav.module.css";
 import { addAbortSignal } from "stream";
 
+const vacio = "";
+
 function Nav() {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
   const state = useSelector((state) => state.types);
 
+  console.log("name", name);
   console.log(name);
   const handleName = (e) => {
     setName(e.target.value);
+  };
+
+  const submit = (e) => {
+    dispatch(getPokemons(name));
+    setName(vacio);
   };
 
   const handleType = (e) => {
@@ -44,9 +52,12 @@ function Nav() {
           type="text"
           onChange={handleName}
           placeholder="Nombre de pokemon"
+          onKeyDown={(e) => (e.key == "Enter" ? submit(e) : null)}
         />
 
-        <button className={style.raise}>Buscar</button>
+        <button className={style.raise} onClick={submit}>
+          Buscar
+        </button>
 
         <Link to="/formulario">
           <button className={style.raise}>Crear Pokémon</button>
