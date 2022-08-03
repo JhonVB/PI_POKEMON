@@ -16,40 +16,65 @@ function Detalle() {
   }, [dispatch]);
 
   return (
-    <div className={style.main}>
-      <Link to="/home">
-        <button>Al home</button>
-      </Link>
+    <div>
       {pokemon ? (
-        <div>
-          <p>{pokemon.name}</p>
-          <img src={pokemon.image} alt="" />
-          <p>HEIGHT:</p>
-          <p>{pokemon.height} Cm</p>
-          <p>weight:</p>
-          <p>{pokemon.weight} gramos</p>
-          <p>hp:</p>
-          <p>{pokemon.hp}</p>
-          <p>attack:</p>
-          <p>{pokemon.attack}</p>
-          <p>defense:</p>
-          <p>{pokemon.defense}</p>
-          <p>speed:</p>
-          <p>{pokemon.speed}</p>
+        <div className={style.main}>
+          <div className={style.contenedorMain}>
+            <div className={style.contenedor}>
+              <div className={style.contenedorLeft}>
+                <p>{pokemon.name}</p>
+                <img src={pokemon.image} alt="" />
+              </div>
 
-          <p>TYPES:</p>
-          {pokemon.types?.map((type) => {
-            return (
-              <p className="type" key={type.id}>
-                {type.name}
-              </p>
-            );
-          })}
+              <div className={style.contenedorRight}>
+                <h2>Stats</h2>
+                <div className={style.contenedorUp}>
+                  <div className={style.contenedorUpLeft}>
+                    <p>Altura</p>
+                    <p>{pokemon.height} Cm</p>
+                    <p>Peso</p>
+                    <p>{pokemon.weight} Gr</p>
+                    <p>Vida</p>
+                    <p>{pokemon.hp}</p>
+                  </div>
+
+                  <div className={style.contenedorUpRight}>
+                    <p>Ataque</p>
+                    <p>{pokemon.attack}</p>
+                    <p>Defensa</p>
+                    <p>{pokemon.defense}</p>
+                    <p>Velocidad</p>
+                    <p>{pokemon.speed}</p>
+                  </div>
+                </div>
+
+                <div className={style.containerDown}>
+                  <span>Tipo/s</span>
+                  <div className={style.contenedorTipo}>
+                    {pokemon.types?.map((type) => {
+                      return (
+                        <p className={style.type} key={type.id}>
+                          {type.name}
+                        </p>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       ) : (
         <h1>Cargando</h1>
       )}
     </div>
+
+    // <div className={style.main}>
+    //   <Link to="/home">
+    //     <button>Al home</button>
+    //   </Link>
+
+    // </div>
   );
 }
 

@@ -143,18 +143,14 @@ function Formulario() {
         <div className={style.contenedorForm}>
           <form onSubmit={handleSubmit}>
             <div className={style.contenedorInputs}>
-              <p>Nombre</p>
-              <input type="text" name="name" onChange={handelChange} required />
-              {errors.name && <p>{errors.name}</p>}
-
               <p>Imagen</p>
-              <input
-                type="text"
-                name="image"
-                onChange={handelChange}
-                required
-              />
+              <br />
+              <input name="image" onChange={handelChange} required />
               {errors.image && <p>{errors.image}</p>}
+
+              <p>Nombre</p>
+              <input name="name" onChange={handelChange} required />
+              {errors.name && <p>{errors.name}</p>}
 
               <p>Altura</p>
               <input

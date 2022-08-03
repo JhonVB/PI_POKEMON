@@ -119,7 +119,8 @@ const getByName = async (name) => {
       return allPokemons;
     }
   } catch (error) {
-    return encontrados;
+    if (encontrados.length > 0) return encontrados;
+    return await allPokemons();
   }
 };
 

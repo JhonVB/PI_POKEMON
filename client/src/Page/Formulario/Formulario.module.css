@@ -53,8 +53,6 @@ span {
   position: absolute;
   display: flex;
   align-items: flex-start;
-  justify-content: center;
-  flex-direction: column;
-  width: 150vh;
-  height: 15vh;
+  justify-content: flex-start;
+  flex-direction: row;
 }

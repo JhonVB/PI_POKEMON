@@ -9,6 +9,7 @@ import {
 } from "../../Redux/actions";
 import { useSelector, useDispatch } from "react-redux";
 import style from "./Nav.module.css";
+import { addAbortSignal } from "stream";
 
 function Nav() {
   const dispatch = useDispatch();
@@ -44,10 +45,11 @@ function Nav() {
           onChange={handleName}
           placeholder="Nombre de pokemon"
         />
-        <button onClick={() => dispatch(getPokemons(name))}>Buscar</button>
+
+        <button className={style.raise}>Buscar</button>
 
         <Link to="/formulario">
-          <button className={style.button}>Crear Pokémon</button>
+          <button className={style.raise}>Crear Pokémon</button>
         </Link>
       </div>
 
