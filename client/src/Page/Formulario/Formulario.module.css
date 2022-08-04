@@ -9,20 +9,15 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-}
-
-.button {
+  position: absolute;
+  margin-top: 3rem;
 }
 
 .contenedorTypos {
   display: flex;
-  justify-content: space-between;
+  justify-content: stretch;
+  align-items: center;
   flex-wrap: wrap;
-  margin-right: 2rem;
-}
-
-span {
-  margin-left: 1.1rem;
 }
 
 .master {
@@ -50,9 +45,25 @@ span {
 }
 
 .contenedorButton {
-  position: absolute;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  flex-direction: row;
+  position: relative;
+}
+
+.input {
+  margin-top: 0.1rem;
+}
+
+.error {
+  color: rgb(56, 187, 169);
+}
+
+.raise:hover,
+.raise:focus {
+  box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+  -webkit-transform: translateY(-0.25em);
+  transform: translateY(-0.25em);
+}
+
+.raise {
+  --color: #c9c9c9;
+  --hover: #418f54;
 }

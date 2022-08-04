@@ -9,24 +9,18 @@ import {
 } from "../../Redux/actions";
 import { useSelector, useDispatch } from "react-redux";
 import style from "./Nav.module.css";
-import { addAbortSignal } from "stream";
-
-const vacio = "";
 
 function Nav() {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
   const state = useSelector((state) => state.types);
 
-  console.log("name", name);
-  console.log(name);
+  const submit = (e) => {
+    if (name.length > 0) dispatch(getPokemons(name));
+    else alert("Agrega un nombre para buscarlo");
+  };
   const handleName = (e) => {
     setName(e.target.value);
-  };
-
-  const submit = (e) => {
-    dispatch(getPokemons(name));
-    setName(vacio);
   };
 
   const handleType = (e) => {
@@ -51,12 +45,17 @@ function Nav() {
         <input
           type="text"
           onChange={handleName}
+          className={style.input}
           placeholder="Nombre de pokemon"
           onKeyDown={(e) => (e.key == "Enter" ? submit(e) : null)}
         />
 
         <button className={style.raise} onClick={submit}>
           Buscar
+        </button>
+
+        <button className={style.raise} onClick={() => dispatch(getPokemons())}>
+          Cargar Pokémons
         </button>
 
         <Link to="/formulario">
@@ -66,8 +65,8 @@ function Nav() {
 
       <div>
         <span>Tipo</span>
-        <select onChange={handleType}>
-          <option value="all">all</option>
+        <select className={style.select} onChange={handleType}>
+          <option value="all">All</option>
           {state?.map((type) => (
             <option id={type.id} value={type.name}>
               {type.name}
@@ -75,20 +74,20 @@ function Nav() {
           ))}
         </select>
         <span>Origen</span>
-        <select onChange={handleOrigin}>
+        <select className={style.select} onChange={handleOrigin}>
           <option value="all">All</option>
           <option value="db">DB</option>
           <option value="api">API</option>
         </select>
         <span>Alfabéticamente</span>
-        <select onChange={handleOrder}>
-          <option value="all">All</option>
+        <select className={style.select} onChange={handleOrder}>
+          <option value="all">Original</option>
           <option value="ascen">Ascendente</option>
           <option value="descen">Descendente</option>
         </select>
         <span>Ataque</span>
-        <select onChange={handleOrderAttack}>
-          <option value="all">All</option>
+        <select className={style.select} onChange={handleOrderAttack}>
+          <option value="all">Original</option>
           <option value="ascen">Ascendente</option>
           <option value="descen">Descendente</option>
         </select>

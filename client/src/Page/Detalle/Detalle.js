@@ -20,36 +20,41 @@ function Detalle() {
     <div className={style.main}>
       {Object.keys(pokemon).length > 0 ? (
         <div className={style.contenedorMain}>
+          <Link to="/home">
+            <button className={style.raise}>Home</button>
+          </Link>
           <div className={style.contenedor}>
             <div className={style.contenedorLeft}>
-              <p>{pokemon.name}</p>
+              <div className={style.contenedorTitulo}>
+                <p className={style.titulo}>{pokemon.name.toUpperCase()}</p>
+              </div>
               <img src={pokemon.image} alt="" />
             </div>
 
             <div className={style.contenedorRight}>
-              <h2>Stats</h2>
+              <p className={style.titulo}>Estadisticas</p>
               <div className={style.contenedorUp}>
                 <div className={style.contenedorUpLeft}>
-                  <p>Altura</p>
+                  <p className={style.subtitulo}>Altura</p>
                   <p>{pokemon.height} Cm</p>
-                  <p>Peso</p>
+                  <p className={style.subtitulo}>Peso</p>
                   <p>{pokemon.weight} Gr</p>
-                  <p>Vida</p>
+                  <p className={style.subtitulo}>Vida</p>
                   <p>{pokemon.hp}</p>
                 </div>
 
                 <div className={style.contenedorUpRight}>
-                  <p>Ataque</p>
+                  <p className={style.subtitulo}>Ataque</p>
                   <p>{pokemon.attack}</p>
-                  <p>Defensa</p>
+                  <p className={style.subtitulo}>Defensa</p>
                   <p>{pokemon.defense}</p>
-                  <p>Velocidad</p>
+                  <p className={style.subtitulo}>Velocidad</p>
                   <p>{pokemon.speed}</p>
                 </div>
               </div>
 
               <div className={style.containerDown}>
-                <span>Tipo/s</span>
+                <p className={style.subtitulo}>Tipo/s</p>
                 <div className={style.contenedorTipo}>
                   {pokemon.types?.map((type) => {
                     return (

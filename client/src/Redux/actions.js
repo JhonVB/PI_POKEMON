@@ -20,13 +20,13 @@ export function getPokemons(name) {
       );
       return dispatch({
         type: GET_POKEMONS,
-        payload: pokemons.data,
+        payload: { pokemons: pokemons.data, flag: true },
       });
     } else {
       pokemons = await axios.get(`http://localhost:3001/pokemons`);
       return dispatch({
         type: GET_POKEMONS,
-        payload: pokemons.data,
+        payload: { pokemons: pokemons.data },
       });
     }
   };

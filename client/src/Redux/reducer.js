@@ -11,7 +11,6 @@ import {
 
 const initialState = {
   pokemons: [],
-  staticPokemons: [],
   pokemon: {},
   types: [],
   order: "all",
@@ -23,11 +22,22 @@ const initialState = {
 export default function rootReducer(state = initialState, action) {
   switch (action.type) {
     case GET_POKEMONS:
-      return {
-        ...state,
-        pokemons: action.payload,
-        staticPokemons: action.payload,
-      };
+      if (!action.payload.flag) {
+        return {
+          ...state,
+          pokemons: action.payload.pokemons,
+        };
+      } else {
+        if (action.payload.pokemons == 0) {
+          alert("pokemon no encontrado");
+        } else {
+          return {
+            ...state,
+            pokemons: action.payload.pokemons,
+          };
+        }
+      }
+
     case GET_DETAIL:
       return {
         ...state,
@@ -60,7 +70,11 @@ export default function rootReducer(state = initialState, action) {
     case ORDER_NAME:
       let tidy = [];
       if (action.payload == "all") {
-        tidy = state.pokemons.sort(function (a, b) {
+        let db = state.pokemons.filter((pokemon) => pokemon.order);
+        let api = state.pokemons.filter(
+          (pokemon) => typeof pokemon.id == "number"
+        );
+        tidy = api.sort(function (a, b) {
           if (a.id > b.id) {
             return 1;
           }
@@ -69,6 +83,14 @@ export default function rootReducer(state = initialState, action) {
           }
           return 0;
         });
+
+        const info = [...tidy, ...db];
+
+        return {
+          ...state,
+          order: action.payload,
+          pokemons: info,
+        };
       } else if (action.payload == "ascen") {
         tidy = state.pokemons.sort(function (a, b) {
           if (a.name > b.name) {
@@ -99,7 +121,11 @@ export default function rootReducer(state = initialState, action) {
     case ORDER_ATTACK:
       let tidyAttack = [];
       if (action.payload == "all") {
-        tidyAttack = state.pokemons.sort(function (a, b) {
+        let db = state.pokemons.filter((pokemon) => pokemon.order);
+        let api = state.pokemons.filter(
+          (pokemon) => typeof pokemon.id == "number"
+        );
+        tidyAttack = api.sort(function (a, b) {
           if (a.id > b.id) {
             return 1;
           }
@@ -108,6 +134,14 @@ export default function rootReducer(state = initialState, action) {
           }
           return 0;
         });
+
+        const info = [...tidyAttack, ...db];
+
+        return {
+          ...state,
+          order: action.payload,
+          pokemons: info,
+        };
       } else if (action.payload == "ascen") {
         tidyAttack = state.pokemons.sort(function (a, b) {
           if (a.attack > b.attack) {

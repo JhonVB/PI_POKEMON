@@ -47,7 +47,6 @@ function Home() {
           <div className={style.nav}>
             <Nav />
           </div>
-
           <Paginado
             data={data}
             pageLimit={paginas()}

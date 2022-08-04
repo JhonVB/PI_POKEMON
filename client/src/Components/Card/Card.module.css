@@ -10,6 +10,11 @@
   color: white;
   text-decoration: none;
 }
+.card:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 12px 16px rgba(84, 130, 228, 0.644);
+}
+
 .cardImg {
   width: 50%;
   margin-top: 1rem;

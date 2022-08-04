@@ -32,23 +32,17 @@ select {
   --hover: #3aa048;
 }
 
-button {
-  color: var(--color);
-  -webkit-transition: 0.25s;
-  transition: 0.25s;
-}
-
-button:hover,
-button:focus {
-  border-color: var(--hover);
-  color: #fff;
-}
-
-button {
-  background: none;
-  border: 2px solid;
-  font: inherit;
-  line-height: 1;
-  margin: 0.5em 0 0 1em;
-  padding: 0.2em 0.2em;
+.select,
+.input {
+  padding: 6px;
+  font-size: auto;
+  border-width: 3.2px;
+  border-color: #418f54;
+  background-color: #ffffff;
+  color: #343434;
+  border-style: solid;
+  border-radius: 23px;
+  box-shadow: -1px 0px 3px rgba(7, 7, 7, 0.32);
+  text-shadow: -50px 0px 0px rgba(139, 57, 57, 0);
+  outline: none;
 }

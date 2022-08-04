@@ -34,8 +34,10 @@ const getById = async (req, res) => {
 
 const createPokemon = async (req, res) => {
   try {
-    const { name, image, hp, attack, defense, speed, height, weight, types } =
+    let { name, image, hp, attack, defense, speed, height, weight, types } =
       req.body;
+
+    name = name.toLowerCase();
 
     const newPokemon = await Pokemon.create({
       name,

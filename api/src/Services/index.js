@@ -115,12 +115,10 @@ const getByName = async (name) => {
       console.log(pokemon);
 
       let allPokemons = [pokemon, ...encontrados];
-
       return allPokemons;
     }
   } catch (error) {
     if (encontrados.length > 0) return encontrados;
-    return await allPokemons();
   }
 };
 

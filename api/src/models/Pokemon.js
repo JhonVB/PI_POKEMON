@@ -35,5 +35,9 @@ module.exports = (sequelize) => {
     weight: {
       type: DataTypes.STRING,
     },
+    order: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+    },
   });
 };
