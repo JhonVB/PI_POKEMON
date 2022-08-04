@@ -1,11 +1,9 @@
-const axios = require("axios");
 const e = require("express");
 const { allPokemons, getByName, detailId } = require("../Services/index");
 const { Pokemon, Type } = require("../db");
 
 const getPokemons = async (req, res) => {
   const { name } = req.query;
-
   let pokemons = [];
   if (!name) {
     pokemons = await allPokemons();
@@ -51,6 +49,7 @@ const createPokemon = async (req, res) => {
     });
 
     const idsType = types.map((type) => type.id);
+
     const newType = await Type.findAll({
       where: { id: idsType },
       attribute: ["name"],

@@ -1,5 +1,7 @@
+import { useSelector, useDispatch } from "react-redux";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import style from "./Nav.module.css";
 import {
   filterType,
   filterOrigin,
@@ -7,8 +9,6 @@ import {
   orderAttack,
   getPokemons,
 } from "../../Redux/actions";
-import { useSelector, useDispatch } from "react-redux";
-import style from "./Nav.module.css";
 
 function Nav() {
   const dispatch = useDispatch();

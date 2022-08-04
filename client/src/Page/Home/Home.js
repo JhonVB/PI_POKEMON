@@ -38,8 +38,6 @@ function Home() {
     data = data.filter((el) => byOrigin[origin] === typeof el.id);
   }
 
-  console.log("data", data);
-
   return (
     <div>
       {pokemons.length > 0 ? (

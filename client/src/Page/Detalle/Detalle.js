@@ -10,8 +10,7 @@ function Detalle() {
   const dispatch = useDispatch();
 
   let pokemon = useSelector((state) => state.pokemon);
-  console.log(pokemon);
-  console.log(pokemon);
+
   useEffect(() => {
     dispatch(getPokemon(id));
   }, [dispatch]);

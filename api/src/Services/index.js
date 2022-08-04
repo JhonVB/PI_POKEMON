@@ -6,7 +6,6 @@ const infoApi = async () => {
     const pageOne = (await axios.get(`https://pokeapi.co/api/v2/pokemon`)).data;
     const pageTwo = (await axios.get(pageOne.next)).data;
     const paginas = [pageOne.results, pageTwo.results];
-    // const paginas = [pageOne.results];
 
     const infoAllPokemons = paginas
       .flat()
@@ -112,7 +111,6 @@ const getByName = async (name) => {
           };
         }),
       };
-      console.log(pokemon);
 
       let allPokemons = [pokemon, ...encontrados];
       return allPokemons;
